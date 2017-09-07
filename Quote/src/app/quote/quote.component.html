@@ -1,0 +1,18 @@
+<div class="container-fluid quote">
+  <div class="row d-flex align-items-center justify-content-center"> 
+    <div class="col-6 text-left">
+      <h1>{{quote?.quote}}</h1>
+    </div>
+  </div>
+  <div class="row d-flex align-items-center justify-content-center"> 
+    <div class="col-6">
+      <p>{{quote?.author.toUpperCase()}}</p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid actions">
+  <div class="row d-flex align-items-center justify-content-around">
+    <i class="fa fa-twitter fa-2x"></i>
+    <button (click)="getQ()" type="button" class="btn btn-success">Next</button>
+  </div>
+</div>
