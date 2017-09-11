@@ -1,21 +1,21 @@
 <div class="container-fluid d-flex flex-column justify-content-around" id="bg">
   <div class="row d-flex justify-content-center">
-      <div class="container-fluid quote">
+      <div class="container-fluid quote" id="quote">
         <div class="row d-flex align-items-center justify-content-center"> 
-          <div class="col-6 text-left">
+          <div class="col-md-6 col-sm-12 text-left">
             <h1>{{quote?.quote}}</h1>
           </div>
         </div>
         <div class="row d-flex align-items-center justify-content-center"> 
-          <div class="col-6">
+          <div class="col-md-6 col-sm-12">
             <p>{{quote?.author.toUpperCase()}}</p>
           </div>
         </div>
       </div>
       <div class="container-fluid actions">
           <div class="row d-flex align-items-center justify-content-around">
-            <i class="fa fa-twitter fa-2x"></i>
-            <button (click)="getQ()" type="button" class="btn btn-lg btn-secondary">Next</button>
+            <a href="https://twitter.com/intent/tweet?text={{quote?.quote}}%20{{quote?.author}}&hashtags=quotes" ><i class="fa fa-twitter fa-3x"></i></a>
+            <button (click)="getQ()" type="button" class="btn btn-secondary">Next quote</button>
           </div>
         </div>        
   </div>

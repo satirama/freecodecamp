@@ -1,7 +1,26 @@
+@keyframes fadeIn { 
+    from { 
+        opacity:0 
+    } 
+    to { 
+        opacity:1 
+    } 
+}
+
+.fade-in 
+    opacity:0  /* make things invisible upon start */
+    animation:fadeIn ease-in 1 /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+
+    animation-fill-mode:forwards  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+    animation-duration: 1s
+    animation-delay: 1.5s
+
+
 #bg
     height 93vh
     .quote
-        div.col-6
+        div.col-md-6
             color #FDFEFE 
         
             h1 
@@ -14,14 +33,14 @@
                 font-size 18px
 
     .quote
-        div.col-6 h1 
+        div.col-md-6 h1 
             padding-top 3%
             padding-left 25px
             padding-right 25px
-        div.col-6 p   
+        div.col-md-6 p   
             padding-bottom 3%  
             padding-left 25px
             padding-right 25px    
 
-    .actions
+    .actions .row a 
         color #FDFEFE 
