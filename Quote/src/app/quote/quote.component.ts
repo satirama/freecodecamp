@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-quote',
@@ -30,7 +31,7 @@ export class QuoteComponent implements OnInit {
 
   getQ(){
     document.getElementById("bg").style.backgroundColor = this.getColor();    
-    //this.http.get("https://andruxnet-random-famous-quotes.p.mashape.com/",this.headerObj).subscribe((res: Response) => this.quote = res.json());
+    this.http.get("https://andruxnet-random-famous-quotes.p.mashape.com/",this.headerObj).subscribe((res: Response) => this.quote = res.json());
   }
 
   ngOnInit() {
