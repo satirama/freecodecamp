@@ -1,0 +1,17 @@
+<div class="container-fluid all">
+  <div class="info row d-flex justify-content-center align-content-center">
+    <div class="col-md-4 col-sm-10 text-center">
+      <h1>{{data?.name}}, {{data?.sys.country}}.</h1>
+      <h3 id="temp">min: {{data?.main.temp_min}}°C - max: {{data?.main.temp_max}}°C
+      </h3>
+      <h4>{{data?.weather[0].main}}
+      </h4>
+      <img src="{{data?.weather[0].icon}}">
+      <div class="row buttons d-flex justify-content-around">
+        <button (click)="celsius()" type="button" class="btn btn-dark">Celsius</button>          
+        <button (click)="fahrenheit()" type="button" class="btn btn-dark">Fahrenheit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
