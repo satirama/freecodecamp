@@ -1,0 +1,10 @@
+<div class="search container-fluid">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="looker col-md-6 col-sm-10">
+      <div class="input-group">
+        <span class="fa fa-search"></span>
+        <input #box (keyup.enter)="search(box.value)" type="text" class="form-control" placeholder="Search for...">    
+      </div>  
+    </div>
+  </div>
+</div>
