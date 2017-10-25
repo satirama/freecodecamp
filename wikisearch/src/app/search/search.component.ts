@@ -10,14 +10,18 @@ import { WikiServiceService } from '../wiki-service.service'
 })
 export class SearchComponent {
 
-  items: Array<string>;
-  
+  items: any;
+  pag = [];
+
   constructor(private WikiServiceService: WikiServiceService) {}
   
   search(term) {
     this.WikiServiceService.search(term)
                           .then(items => this.items = items);
-    console.log(this.items);
+    
+    if (this.items){
+      this.pag = Object.keys(this.items.query.pages); 
+    }
   }
 
 /*  

@@ -1,11 +1,26 @@
 import { Injectable } from '@angular/core';
-import { URLSearchParams, Jsonp } from '@angular/http';
+import { Http, Headers, RequestOptions, URLSearchParams, Jsonp } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WikiServiceService {
 
-  constructor(private jsonp: Jsonp) {}
+  constructor(private http: Http) { }
+  
+  search = (query: string) => {
+    let headers = new Headers();
+    headers.append('Api-User-Agent', 'Example 1');
+    let options = new RequestOptions({ headers: headers});
+    let apiUrl: string = 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=info%7Cextracts&generator=search&inprop=url&exsentences=2&exlimit=20&exintro=1&gsrsearch=' + query +'&gsrlimit=3'
+
+    return this.http
+            .get(apiUrl, options)
+            .toPromise()
+            .then(response => response.json());
+  }
+
+  /*constructor(private jsonp: Jsonp) {}
   
   search (term: string) {
     var search = new URLSearchParams()
@@ -16,5 +31,5 @@ export class WikiServiceService {
                 .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search })
                 .toPromise()
                 .then((response) => response.json()[1]);
-  }
+  }*/
 }
