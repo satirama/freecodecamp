@@ -4,13 +4,12 @@
       <div class="input-group">
         <span class="fa fa-search"></span>
         <input #box (keyup.enter)="search(box.value)" type="text" class="form-control" placeholder="Search for..."> 
-        <p>{{items?.query.pages}}</p>
       </div>  
     </div>
   </div>
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-12" *ngFor="let p of pag">
-      <app-article [title]="p" [description]="items.query.pages.p"></app-article>
+      <app-article [title]="p.title" [description]="p.extract"></app-article>
     </div>
   </div>
 </div>
