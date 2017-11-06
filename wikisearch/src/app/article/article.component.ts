@@ -12,6 +12,9 @@ export class ArticleComponent implements OnInit {
 
   @Input()
     description: string;
+
+  @Input()
+    url: string;
  
   constructor() { }
 

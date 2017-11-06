@@ -17,15 +17,21 @@ export class SearchComponent {
   constructor(private WikiServiceService: WikiServiceService) {}
 
   search(term) {
+
     this.WikiServiceService.search(term)
                           .then(items => this.items = items);
     
     if (this.items){
       this.key = Object.keys(this.items.query.pages);
+      if (this.pag.length > 0){
+        for (var i = this.pag.length; i > 0; i--){
+          this.pag.pop();
+        }
+      }
       for (var i = 0; i <this. key.length; i++) {
         this.pag.push(this.items.query.pages[this.key[i]]);
       }
-      console.log(this.pag); 
+      console.log(this.items); 
     }
   }
 

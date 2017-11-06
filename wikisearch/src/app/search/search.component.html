@@ -1,15 +1,24 @@
 <div class="search container-fluid">
+  <div class="quote row d-flex justify-content-center align-items-center">
+    <div class="col-10 text-right">
+      <h4>The important thing is not to stop questioning.<br> Curiosity has its own reason for existing.</h4><br>
+      <p>- Albert Einsten</p>
+    </div>
+  </div>
   <div class="row d-flex justify-content-center align-items-center">
     <div class="looker col-md-6 col-sm-10">
+      <div class="random text-center">
+        <a href="https://en.wikipedia.org/wiki/Special:Random"><p>Go random</p></a>
+      </div>
       <div class="input-group">
         <span class="fa fa-search"></span>
-        <input #box (keyup.enter)="search(box.value)" type="text" class="form-control" placeholder="Search for..."> 
+        <input #box (keyup.enter)="search(box.value)" type="text" class="form-control" placeholder="Or search for..."> 
       </div>  
     </div>
   </div>
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-12" *ngFor="let p of pag">
-      <app-article [title]="p.title" [description]="p.extract"></app-article>
+      <app-article [title]="p.title" [description]="p.extract" [url]="p.fullurl"></app-article>
     </div>
   </div>
 </div>
