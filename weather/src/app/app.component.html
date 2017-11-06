@@ -8,10 +8,15 @@
       </h4>
       <img src="{{data?.weather[0].icon}}">
       <div class="row buttons d-flex justify-content-around">
-        <button (click)="celsius()" type="button" class="btn btn-dark">Celsius</button>          
-        <button (click)="fahrenheit()" type="button" class="btn btn-dark">Fahrenheit</button>
+        <button (click)="celsius()" type="button" class="btn btn-light">Celsius</button>          
+        <button (click)="fahrenheit()" type="button" class="btn btn-light">Fahrenheit</button>
       </div>
     </div>
+  </div>
+  <div class="footer row d-flex justify-content-center align-items-center">
+    <a href="https://github.com/satirama/freecodecamp/tree/master/weather" target="_blank">
+      <i class="fa fa-github fa-2x"></i>
+    </a>
   </div>
 </div>
 <router-outlet></router-outlet>
