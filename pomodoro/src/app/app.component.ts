@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
+import * as timer from 'timer.js';
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,38 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;  
 
+  timer = new timer();
+
+
+
+
   ngOnInit(){
     this.title = 'click to begin!';
     this.mins = this.work;
     this.time = this.mins * 60;
+
+    this.timer.options({
+      onstart: function(){
+        console.log('yei');
+      },
+      onpause: function(){
+        console.log('end');
+      }
+    })
   }
 
-  counter(t){
+  onOff(){
+    if (!this.power) {
+      this.power = true;
+      this.timer.start(60);
+    }
+    else{
+      this.power = false;
+      this.timer.pause();
+    }
+  }
+
+  /*counter(t){
     if (this.time > 0){
       this.time -= t;
       this.secs = ('0' + (59 - t)).slice(-2);
@@ -35,7 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe();
       console.log('apago');
     }
-  /*  this.time -= t;
+    this.time -= t;
     //if (Number(this.secs) === 0) {
        this.secs = ('0' + (59 - t)).slice(-2);
        this.mins -= 1;
@@ -62,7 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.secs = '00';
         this.time = this.play * 60;
       }
-    */
+    
   }
 
   onOff(){
@@ -78,7 +104,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe();
       this.power = false;
     }
-  }
+  }*/
 
   playMore(){
     this.play += 1;
