@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
@@ -6,8 +6,8 @@ import { Observable, Subscription } from 'rxjs/Rx';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.styl']
 })
-export class AppComponent implements OnInit {
-  title = 'app';
+export class AppComponent implements OnInit, OnDestroy {
+  title = '';
 
   time = 0;
   play = 5;
@@ -15,50 +15,68 @@ export class AppComponent implements OnInit {
   mins = 0;
   secs = '00';
 
-  status = 'work';
+  working = true;
+  power = false;
 
   private sub: Subscription;  
 
   ngOnInit(){
-    this.title= 'click to begin!';
-    this.mins= this.work;
+    this.title = 'click to begin!';
+    this.mins = this.work;
+    this.time = this.mins * 60;
   }
 
   counter(t){
-    this.time -= t;
-    while (this.time > 0){
-      if (Number(this.secs) === 0) {
-       this.secs = ('0' + (60 - t)).slice(-2);
-       this.mins -= 1;
-      }
-    }
-    this.sub.unsubscribe();
-    this.secs = '00';
-    if (this.status === 'work'){
-      this.status = 'play';
-      this.title = 'time to play!';
+    if (this.time > 0){
+      this.time -= t;
+      this.secs = ('0' + (59 - t)).slice(-2);
     }
     else{
-      this.status = 'play';
-      this.title = 'time to work!';
+      this.sub.unsubscribe();
+      console.log('apago');
     }
+  /*  this.time -= t;
+    //if (Number(this.secs) === 0) {
+       this.secs = ('0' + (59 - t)).slice(-2);
+       this.mins -= 1;
+    //}
+    if (this.time === 0){
+      this.sub.unsubscribe();
+      this.secs = '00';
+      if (this.status === 'work'){
+        this.status = 'play';
+        this.title = 'time to play!';
+      }
+      else{
+        this.status = 'work';
+        this.title = 'time to work!';
+      }
+    }
+    if (this.status === 'work'){
+        this.mins = this.work;
+        this.secs = '00';
+        this.time = this.work * 60;
+      }
+      else{
+        this.mins = this.play;
+        this.secs = '00';
+        this.time = this.play * 60;
+      }
+    */
   }
 
   onOff(){
-    let timer = Observable.timer(0,1000);
-    this.sub = timer.subscribe((t) =>{
-      this.counter(t);
-    });
+    if (!this.power) {
+      this.power = true;
 
-    if (this.status === 'work'){
-      this.mins = this.work;
-      this.secs = '00';
-      this.time = this.work * 60
+      let timer = Observable.timer(0,1000);
+      this.sub = timer.subscribe((t) =>{
+        this.counter(t);
+      });
     }
     else{
-      this.mins = this.play;
-      this.secs = '00';
-      this.time = this.play * 60
+      this.sub.unsubscribe();
+      this.power = false;
     }
   }
 
@@ -77,4 +95,9 @@ export class AppComponent implements OnInit {
   workLess(){
     this.work -= 1;
   }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
+  }
+
 }
