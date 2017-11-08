@@ -8,9 +8,9 @@
   <div class="set row d-flex justify-content-center align-items-center">
     <div class="col-md-4 col-sm-6 text center">
       <div class="row d-flex justify-content-center ">
-        <h2>-</h2>
-        <h3>34465</h3>
-        <h2>+</h2>
+        <button type="button" (click)="workLess()">-</button>
+        <h3>{{work}}</h3>
+        <button type="button" (click)="workMore()">+</button>
       </div>
       <div class="row d-flex justify-content-center ">
         <h5>work</h5>
@@ -18,9 +18,9 @@
     </div>
     <div class="col-md-4 col-sm-6 text center">
       <div class="row d-flex justify-content-center ">
-        <h2>-</h2>
-        <h3>number</h3>
-        <h2>+</h2>
+        <button type="button" (click)="playLess()">-</button>
+        <h3>{{play}}</h3>
+        <button type="button" (click)="playMore()">+</button>
       </div>
       <div class="row d-flex justify-content-center ">
         <h5>play</h5>
@@ -28,8 +28,9 @@
     </div>
   </div>
   <div class="clock row d-flex justify-content-center align-items-center">
-    <div class="timer text-center">
-      <p>time</p>
+    <div class="text-center">
+      <p>{{title}}</p>
+      <button type="button" class="time" (click)="onOff()">{{mins}}:{{secs}}</button>
     </div>
   </div>
   <div class="footer row d-flex justify-content-center align-items-center">
