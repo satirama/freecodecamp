@@ -3,34 +3,17 @@
     <div class="col-md-9 col-sm-12 text-center">
       <h1>What's on twitch??</h1>
       <div class="viewer row  d-flex justify-content-center align-items-center">
-        <div class="column col-12 text-center">
-          <div class="channel row justify-content-around">
-            <p>freecodecamp</p>
-            <p>{{g?.stream}}</p>
+        <div class="column col-12">
+          <div class="channel row justify-content-center" *ngFor="let i of info">
+            <div class="col-4">
+              <p>{{i?.name.name}}</p>
+            </div>
+            <div class="col-8">
+              <a [href]="i?._links.channel"><p>{{i?.stream.game}}</p></a>
+            </div>
           </div>
         </div>
-        <div class="column col-12 text-center">
-          <div class="channel row justify-content-around">
-            <p>noobs2ninjas</p>
-            <p *ngIf="f?.stream === null">offline</p>
-            <p *ngIf="f?.stream !== null">{{f?.stream.game}} Viewers: {{f?.stream.viewers}}</p>
-          </div>
-        </div>
-        <div class="column col-12 text-center">
-          <div class="channel row justify-content-around">
-            <p>RobotCaleb</p>
-            <p *ngIf="h?.stream === null">offline</p>
-            <p *ngIf="h?.stream !== null">{{h?.stream.game}} Viewers: {{h?.stream.viewers}}</p>
-          </div>
-        </div>
-        <div class="column col-12 text-center">
-          <div class="channel row justify-content-around">
-            <p>OgamingSC2</p>
-            <p *ngIf="i.stream === null">offline</p>
-            <p *ngIf="i.stream !== null">{{i?.stream.game}} Viewers: {{i?.stream.viewers}}</p>
-          </div>
-        </div>
-      </div>
+      <div>
     </div>
   </div>
 </div>

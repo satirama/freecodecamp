@@ -14,6 +14,11 @@ export class AppComponent implements OnInit {
   g: any;
   h: any;
   i: any;
+  j: any;
+  k: any;
+  l: any;
+  m: any;
+  info= [];
   
 
   constructor(private http: Http){}
@@ -24,21 +29,25 @@ export class AppComponent implements OnInit {
     myHeaders.append('Client-ID', 'nc8vljzbq8521new6llbal7kqc9hom');
     let options = new RequestOptions({ headers: myHeaders});  
     this.http.get('https://api.twitch.tv/kraken/streams/' + id, options).subscribe(
-      (res: Response) => obj = res.json()); 
+      (res: Response) => {
+        obj = res.json();
+        obj.name = {name: id};
+        if (obj.stream === null){
+          obj.stream = {game: 'offline'};
+        } 
+        this.info.push(obj);
+      }
+    ) 
   }
 
   ngOnInit(){
     this.req('freecodecamp', this.g);
     this.req('noobs2ninjas', this.f);
-    this.req('RobotCaleb', this.h);
+    this.req('cretetion', this.h);
     this.req('OgamingSC2', this.i);
-/*
-    var arr = [this.f, this.g, this.h, this.i]
-
-    for (var i = 0; i < arr.length; i++){
-      if(arr[i].stream === null){
-        arr[i].stream = 'offline';
-      }
-    }*/
+    this.req('ESL_SC2', this.j);
+    this.req('storbeck', this.k);
+    this.req('habathcx', this.l);
+    this.req('RobotCaleb', this.m);
   }
 }
