@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
         if (obj.stream === null){
           obj.stream = {game: 'offline'};
         } 
+        obj.stream.url = 'https://www.twitch.tv/' + id;
         this.info.push(obj);
       }
     ) 

@@ -5,16 +5,19 @@
       <div class="viewer row  d-flex justify-content-center align-items-center">
         <div class="column col-12">
           <div class="channel row justify-content-center" *ngFor="let i of info">
-            <div class="col-4">
+            <div class="col-md-4 col-sm-12 text-center">
               <p>{{i?.name.name}}</p>
             </div>
-            <div class="col-8">
-              <a [href]="i?._links.channel"><p>{{i?.stream.game}}</p></a>
+            <div class="col-md-4 col-sm-12 text-center">
+              <a [href]="i?.stream.url"><p>{{i?.stream.game}}</p></a>
             </div>
           </div>
         </div>
-      <div>
+      </div>
     </div>
+  </div>
+  <div class="footer row d-flex justify-content-center align-items-center">
+    <a href="https://github.com/satirama/freecodecamp/tree/master/twitch"><i class="fa fa-github fa-2x"></i></a>
   </div>
 </div>
 <router-outlet></router-outlet>
