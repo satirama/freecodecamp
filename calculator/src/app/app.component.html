@@ -1,41 +1,41 @@
 <div class="container-fluid">
   <div class="row calculator d-flex align-items-center justify-content-around">
     <div id="bg" class="text-center">
-      <div id="console"></div>
+      <div id="console"><p>{{sign}}{{calculator}}{{sign2}}</p></div>
       <div class="row-first">
-        <button type="button" class="btn btn-light">ac</button>
-        <button type="button" class="btn btn-light">+/-</button>
-        <button type="button" class="btn btn-light">%</button>
-        <button type="button" class="right btn">÷</button>
+        <button type="button" class="btn btn-light" (click)="ac()">ac</button>
+        <button type="button" class="btn btn-light" (click)="invertSign()">+/-</button>
+        <button type="button" class="btn btn-light" (click)="input('%')">%</button>
+        <button type="button" class="right btn"  (click)="input('/')">÷</button>
       </div>
       <div class="row-nums">
-        <button type="button" class="btn btn-secondary">7</button>
-        <button type="button" class="btn btn-secondary">8</button>
-        <button type="button" class="btn btn-secondary">9</button>
-        <button type="button" class="right btn">x</button>
+        <button type="button" class="btn btn-dark" (click)="input('7')">7</button>
+        <button type="button" class="btn btn-dark" (click)="input('8')">8</button>
+        <button type="button" class="btn btn-dark" (click)="input('9')">9</button>
+        <button type="button" class="right btn" (click)="input('*')">x</button>
       </div>
       <div class="row-nums">
-        <button type="button" class="btn btn-secondary">4</button>
-        <button type="button" class="btn btn-secondary">5</button>
-        <button type="button" class="btn btn-secondary">6</button>
-        <button type="button" class="right btn">-</button>
+        <button type="button" class="btn btn-dark" (click)="input('4')">4</button>
+        <button type="button" class="btn btn-dark" (click)="input('5')">5</button>
+        <button type="button" class="btn btn-dark" (click)="input('6')">6</button>
+        <button type="button" class="right btn" (click)="input('-')">-</button>
       </div>
       <div class="row-nums">
-        <button type="button" class="btn btn-secondary">1</button>
-        <button type="button" class="btn btn-secondary">2</button>
-        <button type="button" class="btn btn-secondary">3</button>
-        <button type="button" class="right btn">+</button>
+        <button type="button" class="btn btn-dark" (click)="input('1')">1</button>
+        <button type="button" class="btn btn-dark" (click)="input('2')">2</button>
+        <button type="button" class="btn btn-dark" (click)="input('3')">3</button>
+        <button type="button" class="right btn" (click)="input('+')">+</button>
       </div>
       <div class="row-last">
-        <button type="button" class="btn lg btn-secondary">0</button>
-        <button type="button" class="btn btn-light">.</button>
-        <button type="button" class="btn btn-light">=</button>
+        <button type="button" class="btn lg btn-dark" (click)="input('0')">0</button>
+        <button type="button" class="btn btn-light"  (click)="input('.')">.</button>
+        <button type="button" class="btn btn-light" (click)="solve()">=</button>
       </div>
     </div>
   </div>
   <div class="footer row d-flex align-items-center justify-content-around">
     <div class="col-4 text-center">
-      <p>dsfsdf<i class="fa fa-github" aria-hidden="true"></i></p>      
+      <a href="https://github.com/satirama/freecodecamp/tree/master/calculator"><i class="fa fa-github" aria-hidden="true"></i></a>      
     </div>
   </div>
 </div>
