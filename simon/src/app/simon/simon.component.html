@@ -1,0 +1,19 @@
+<p>
+  simon works!
+</p>
+<div class="squares container-fluid">
+  <div class="row d-flex justify-content-center align-items-center">
+      <a (click)="select(1)"><div id="1" class="yellow"></div></a>
+      <a (click)="select(2)"><div id="2" class="green"></div></a>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center">
+      <a (click)="select(3)"><div id="3" class="orange"></div></a>
+      <a (click)="select(4)"><div id="4" class="blue"></div></a>
+  </div>
+  <div class="row">
+    <div class="col-10">
+        <a (click)="start()"><button class="btn btn-info">Start</button></a>
+    </div>
+    <p>{{score}}</p>
+  </div>
+</div>
