@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { resolve } from 'url';
+import { reject } from 'q';
 
 @Component({
   selector: 'app-simon',
@@ -10,7 +12,7 @@ export class SimonComponent implements OnInit {
   strict = false;
   onPlay = false;
   computerTurn = true;
-  sequence = [];
+  computerSeq = [];
   playerSeq = [];
   score = 0;
   text = '';
@@ -18,24 +20,57 @@ export class SimonComponent implements OnInit {
   constructor() { }
  
   ngOnInit() {
-    this.sequence.push(this.getRandom());
-    this.sequence.push(this.getRandom());
-    this.sequence.push(this.getRandom());
-    this.score = this.sequence.length;
-    console.log(this.sequence);
-    document.getElementById('1').click();
   }
 
   start(){
     this.score = 0;
     this.onPlay = true;
-    this.sequence = [];
-    this.playerSeq = [];    
+    this.computerSeq = [];
+    this.playerSeq = []; 
+    this.computerTurn = true;
+
+    this.game();
+  }
+
+  game(){
+    var computerMove, 
+    playerMove;
+
+    computerMove = () => {
+      console.log(this.computerTurn, 'player', this.playerSeq, 'comp', this.computerSeq);
+
+      this.computerSeq.push(this.getRandom());
+      for (let i = 0; i < this.computerSeq.length; i++){
+        console.log('during for', this.computerTurn);
+        document.getElementById(this.computerSeq[i]).click();
+      }
+
+      playerMove();
+    }
+
+    playerMove = () => {
+      setTimeout( function(){ 
+        if (!this.computerTurn && JSON.stringify(this.playerSeq) === JSON.stringify(this.computerSeq)){
+
+          this.computerTurn = !this.computerTurn;
+          console.log(this.computerTurn);
+
+          if(this.computerTurn){
+            computerMove()
+          }
+          console.log('player checked');
+        }
+        else {
+          alert("Loser"); 
+        }
+      }, 5000);
+    };
+    return computerMove();
   }
 
   getRandom(){
     let choose = Math.floor(Math.random() * 4 + 1); 
-    console.log(choose);
+    console.log('random', choose);
     return choose;
   }
 
@@ -49,15 +84,15 @@ export class SimonComponent implements OnInit {
 
   /* 
   
-  this.sequence.push(this.getRandom());
-  this.sequence.forEach((el)=>{
+  this.computerSeq.push(this.getRandom());
+  this.computerSeq.forEach((el)=>{
     document.getElementById('+ el +').click();
   })
   
   
   elements 
   legend: start game, win or loose
-  score: how long is the sequence
+  score: how long is the computerSeq
   strict button
   start/restart button
 
@@ -69,8 +104,8 @@ export class SimonComponent implements OnInit {
   //mistake traker, if strict mode is on, then game is lost
   //if 20 followups correct win
   //sound and birghter color when square is selected or clicked
-  //sequence var, tracks the order of the squares and resets when game is lost or win
-  //random selection for the next square in the sequence
+  //computerSeq var, tracks the order of the squares and resets when game is lost or win
+  //random selection for the next square in the computerSeq
 
 
 }
