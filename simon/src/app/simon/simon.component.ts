@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { resolve } from 'url';
-import { reject } from 'q';
+import { reject, Promise } from 'q';
+//import { clearInterval } from 'timers';
 
 @Component({
   selector: 'app-simon',
@@ -25,70 +26,57 @@ export class SimonComponent implements OnInit {
   start(){
     this.score = 0;
     this.onPlay = true;
-    this.computerSeq = [];
     this.playerSeq = []; 
     this.computerTurn = true;
 
-    this.game();
+    if (this.onPlay){
+      this.score++;
+      this.computerSeq.push(this.getRandom());
+      this.computerMove();
+    }
   }
 
-  game(){
-    var computerMove, 
-    playerMove;
-
-    computerMove = () => {
-      console.log(this.computerTurn, 'player', this.playerSeq, 'comp', this.computerSeq);
-
-      this.computerSeq.push(this.getRandom());
-      for (let i = 0; i < this.computerSeq.length; i++){
-        console.log('during for', this.computerTurn);
-        document.getElementById(this.computerSeq[i]).click();
+  computerMove(){
+    let i = 0;
+    let inter = setInterval( () => {
+      document.getElementById(this.computerSeq[i]).click();
+      i++;
+      if (i >= this.computerSeq.length){
+        this.computerTurn = false;
+        clearInterval(inter);
+        console.log(this.computerTurn);
       }
-
-      playerMove();
-    }
-
-    playerMove = () => {
-      setTimeout( function(){ 
-        if (!this.computerTurn && JSON.stringify(this.playerSeq) === JSON.stringify(this.computerSeq)){
-
-          this.computerTurn = !this.computerTurn;
-          console.log(this.computerTurn);
-
-          if(this.computerTurn){
-            computerMove()
-          }
-          console.log('player checked');
-        }
-        else {
-          alert("Loser"); 
-        }
-      }, 5000);
-    };
-    return computerMove();
+    }, 700)
   }
 
   getRandom(){
     let choose = Math.floor(Math.random() * 4 + 1); 
-    console.log('random', choose);
+    console.log('choose', choose);
     return choose;
   }
 
   select(id){
     var sound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound'+ id +'.mp3');  sound.play();
-    if (!this.computerTurn && this.onPlay){
-      this.playerSeq.push(id);
-      console.log('player chose', id);
+
+
+    if (this.onPlay && !this.computerTurn){
+      if (this.playerSeq.length < this.computerSeq.length){
+        this.playerSeq.push(id);
+        console.log('player', this.playerSeq);
+      }
+      if (this.playerSeq.length === this.computerSeq.length){
+        if(JSON.stringify(this.playerSeq) === JSON.stringify(this.computerSeq)){
+          console.log('yay');
+          this.start();
+        }
+      }
+      else{
+        console.log('nay')
+      }
     }
   }
 
   /* 
-  
-  this.computerSeq.push(this.getRandom());
-  this.computerSeq.forEach((el)=>{
-    document.getElementById('+ el +').click();
-  })
-  
   
   elements 
   legend: start game, win or loose
