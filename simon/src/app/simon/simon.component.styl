@@ -14,3 +14,38 @@
     background-color: #03E4D3;
     width: 140px;
     height: 140px;
+
+.toogle
+    input
+        height: 0;
+        width: 0;
+        visibility: hidden;
+        &:checked + label
+    	    background: #00AF60;
+        &:checked + label:after
+            left: calc(100% - 29px);
+	        transform: translateX(-100%);
+    label 
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 70px;
+        height: 30px;
+        background: grey;
+        display: block;
+        border-radius: 45px;
+        position: relative;
+        &:after 
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            width: 26px;
+            height: 26px;
+            background: #fff;
+            border-radius: 90px;
+            transition: 0.3s;
+        &:active:after
+        	width: 20px;
+
+
+

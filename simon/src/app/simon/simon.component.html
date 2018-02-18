@@ -12,8 +12,13 @@
   </div>
   <div class="row">
     <div class="col-10">
-        <a (click)="start()"><button class="btn btn-info">Start</button></a>
+        <a (click)="start(true)"><button class="btn btn-info" id="start-btn">Start</button></a>
     </div>
     <p>{{score}}</p>
+    <p>{{text}}</p>
+    <div class="toogle">
+      <input type="checkbox" id="switch" (click)="toggleStrict()" />
+			<label for="switch">Toggle</label>
+    </div>
   </div>
 </div>
