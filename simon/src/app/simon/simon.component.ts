@@ -124,24 +124,4 @@ export class SimonComponent implements OnInit {
     this.strictMode = !this.strictMode;
   }
 
-  /* 
-  
-  elements 
-  legend: start game, win or loose
-  score: how long is the computerSeq
-  strict button
-  start/restart button
-
-  */
-
-  //status win or loose
-  //button to restart
-  //strict mode on off
-  //mistake traker, if strict mode is on, then game is lost
-  //if 20 followups correct win
-  //sound and birghter color when square is selected or clicked
-  //computerSeq var, tracks the order of the squares and resets when game is lost or win
-  //random selection for the next square in the computerSeq
-
-
 }

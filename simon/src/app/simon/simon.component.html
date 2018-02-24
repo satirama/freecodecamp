@@ -1,24 +1,32 @@
-<p>
-  simon works!
-</p>
-<div class="squares container-fluid">
-  <div class="row d-flex justify-content-center align-items-center">
-      <a (click)="select(1)"><div id="1" class="yellow"></div></a>
-      <a (click)="select(2)"><div id="2" class="green"></div></a>
-  </div>
-  <div class="row d-flex justify-content-center align-items-center">
-      <a (click)="select(3)"><div id="3" class="orange"></div></a>
-      <a (click)="select(4)"><div id="4" class="blue"></div></a>
-  </div>
-  <div class="row">
-    <div class="col-10">
-        <a (click)="start(true)"><button class="btn btn-info" id="start-btn">Start</button></a>
+<div class="game container-fluid">
+  <div class="title row d-flex justify-content-center align-items-center">
+      <div class="col-10 text-center">
+        <h1>{{text}}</h1>
+      </div>
     </div>
-    <p>{{score}}</p>
-    <p>{{text}}</p>
-    <div class="toogle">
-      <input type="checkbox" id="switch" (click)="toggleStrict()" />
-			<label for="switch">Toggle</label>
+  <div class="squares container-fluid">
+    <div class="row d-flex justify-content-center align-items-center">
+        <a (click)="select(1)"><div id="1" class="yellow"></div></a>
+        <a (click)="select(2)"><div id="2" class="green"></div></a>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <a (click)="select(3)"><div id="3" class="orange"></div></a>
+        <a (click)="select(4)"><div id="4" class="blue"></div></a>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-1">
+          <a (click)="start(true)"><button class="btn btn-info" id="start-btn">Start</button></a>
+      </div>
+      <div class="col-2">
+        <p>{{score}}</p>
+      </div>
+      <div class="col-2">
+        <p></p>
+      </div>
+      <div class="toogle">
+        <label for="switch">Toggle</label>
+        <input type="checkbox" id="switch" (click)="toggleStrict()" />
+      </div>
     </div>
   </div>
 </div>
