@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { resolve } from 'url';
 import { reject, Promise } from 'q';
+//import { setTimeout } from 'timers';
 //import { clearInterval } from 'timers';
 
 @Component({
@@ -44,6 +45,7 @@ export class SimonComponent implements OnInit {
 
       //finish game when player wins
       else{
+        alert('Congratulations! You win!')
         this.text = 'congratulations';
         this.gameStart = false;
         document.getElementById('start-btn').innerText= 'Start';
@@ -87,7 +89,10 @@ export class SimonComponent implements OnInit {
   //when button is clicked
   select(id){
     var sound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound'+ id +'.mp3');  sound.play();
-
+    document.getElementById(id).style.filter = 'contrast(300%)';
+    setTimeout(()=> {
+      document.getElementById(id).style.filter = 'contrast(100%)';
+      }, 500);
     //player moves
     if (this.gameStart && !this.computerTurn){
       //keep track of the player's choices
@@ -122,6 +127,7 @@ export class SimonComponent implements OnInit {
 
   toggleStrict(){
     this.strictMode = !this.strictMode;
+    console.log(this.strictMode);
   }
 
 }

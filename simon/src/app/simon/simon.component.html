@@ -1,10 +1,6 @@
 <div class="game container-fluid">
-  <div class="title row d-flex justify-content-center align-items-center">
-      <div class="col-10 text-center">
-        <h1>{{text}}</h1>
-      </div>
-    </div>
   <div class="squares container-fluid">
+    <h1>Hello Simon!</h1>
     <div class="row d-flex justify-content-center align-items-center">
         <a (click)="select(1)"><div id="1" class="yellow"></div></a>
         <a (click)="select(2)"><div id="2" class="green"></div></a>
@@ -13,20 +9,24 @@
         <a (click)="select(3)"><div id="3" class="orange"></div></a>
         <a (click)="select(4)"><div id="4" class="blue"></div></a>
     </div>
+  </div>
+  <div class="container-fluid info">
+    <div class="row ops d-flex justify-content-center align-items-center">
+      <div class="col-6 score text-right">
+        <p>Score {{score}}</p>
+      </div>
+      <div class="col-6 toogle text-left">
+        <label for="switch">Strict Mode On<br></label>
+        <input type="checkbox" id="switch" (click)="toggleStrict()"/>
+      </div>
+    </div>
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-1">
+      <div class="col-12 text-center">
           <a (click)="start(true)"><button class="btn btn-info" id="start-btn">Start</button></a>
       </div>
-      <div class="col-2">
-        <p>{{score}}</p>
-      </div>
-      <div class="col-2">
-        <p></p>
-      </div>
-      <div class="toogle">
-        <label for="switch">Toggle</label>
-        <input type="checkbox" id="switch" (click)="toggleStrict()" />
-      </div>
+    </div>
+    <div class="footer row d-flex justify-content-center align-items-center">
+      <a href="https://github.com/satirama/freecodecamp/tree/master/pomodoro"><i class="fa fa-github fa-2x"></i></a>
     </div>
   </div>
 </div>

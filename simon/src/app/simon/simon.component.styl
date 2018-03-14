@@ -1,72 +1,112 @@
 .game
-    .yellow
-        background-color: #FBDD02;
-        width: 150px;
-        height: 150px;
-        border-top-left-radius: 100%;
-        box-shadow: -2px -3px 5px 1px #B5B5B5;
-        margin: 0 4px 4px 0;
-        border-bottom-right-radius: 4px;
-    .green
-        background-color: #65E700;
-        width: 150px;
-        height: 150px;
-        border-top-right-radius: 100%;
-        box-shadow: 2px -3px 5px 1px #B5B5B5;
-        margin: 0 0 4px 4px;
-        border-bottom-left-radius: 4px;
-    .orange
-        background-color: #FB3702;
-        width: 150px;
-        height: 150px;
-        border-bottom-left-radius: 100%;
-        box-shadow: -2px 3px 5px 1px #B5B5B5;
-        margin: 4px 4px 0 0;
-        border-top-right-radius: 4px;
-    .blue
-        background-color: #03E4D3;
-        width: 150px;
-        height: 150px;
-        border-bottom-right-radius: 100%;
-        box-shadow: 2px 3px 5px 1px #B5B5B5;
-        margin: 4px 0 0 4px;
-        border-top-left-radius: 4px;
-    a button 
-        background-color: rgba(2,2,2,0);
-        border: 2px solid #fff;
-        font-family: 'Satisfy', cursive;
-        font-size: 25px;
-    .toogle
-        input
-            height: 0;
-            width: 0;
-            visibility: hidden;
-            &:checked + label
-                background: #00AF60;
-            &:checked + label:after
-                left: calc(100% - 29px);
-                transform: translateX(-100%);
-        label 
-            cursor: pointer;
-            text-indent: -9999px;
-            width: 70px;
-            height: 30px;
-            background: grey;
-            display: block;
-            border-radius: 45px;
-            position: relative;
-            &:after 
-                content: '';
-                position: absolute;
-                top: 2px;
-                left: 3px;
-                width: 26px;
-                height: 26px;
-                background: #fff;
-                border-radius: 90px;
-                transition: 0.3s;
-            &:active:after
-                width: 20px;
+    height: 100vh;
+    .squares
+        width: 90%;
+        background-color: #fff;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h1  
+            font-family: 'Press Start 2P', cursive;
+            font-size: 33px;
+            color: #464646;
+            margin-bottom: 2em;
+        .yellow
+            background-color: #FBDD02;
+            width: 150px;
+            height: 150px;
+            border-top-left-radius: 100%;
+            box-shadow: -2px -3px 5px 1px #B5B5B5;
+            margin: 0 0 4px 0;
+            border-bottom-right-radius: 4px;
+            border: 2px solid rgba(2,2,2,0.3);
+        .green
+            background-color: #65E700;
+            width: 150px;
+            height: 150px;
+            border-top-right-radius: 100%;
+            box-shadow: 2px -3px 5px 1px #B5B5B5;
+            margin: 0 0 4px 4px;
+            border-bottom-left-radius: 4px;
+            border: 2px solid rgba(2,2,2,0.3);
+        .orange
+            background-color: #FB3702;
+            width: 150px;
+            height: 150px;
+            border-bottom-left-radius: 100%;
+            box-shadow: -2px 3px 5px 1px #B5B5B5;
+            margin: 4px 0 0 0;
+            border-top-right-radius: 4px;
+            border: 2px solid rgba(2,2,2,0.3);
+        .blue
+            background-color: #03E4D3;
+            width: 150px;
+            height: 150px;
+            border-bottom-right-radius: 100%;
+            box-shadow: 2px 3px 5px 1px #B5B5B5;
+            margin: 4px 0 0 4px;
+            border-top-left-radius: 4px;
+            border: 2px solid rgba(2,2,2,0.3);
+    .info
+        width: 90%;
+        background-color: #fff;
+        height: 30vh;
+        .ops
+            padding-top: 1em;
+            padding-bottom: 1em;
+            .score
+                font-family: 'Press Start 2P', cursive;
+                font-size: 18px;
+                color: #464646;
+            .toogle
+                label
+                    font-family: 'Press Start 2P', cursive;
+                    font-size: 18px;
+                    color: #464646;
+                input
+                    height: 30px;
+                    width: 30px;
+                /*    visibility: hidden;
+                input:checked + label 
+                        background: #00AF60;
+                input:checked + label:after
+                        left: calc(100% - 29px);
+                        transform: translateX(-100%);
+                label 
+                    cursor: pointer;
+                    text-indent: -9999px;
+                    width: 70px;
+                    height: 30px;
+                    background: grey;
+                    display: block;
+                    border-radius: 45px;
+                    position: relative;
+                    &:after 
+                        content: '';
+                        position: absolute;
+                        top: 2px;
+                        left: 3px;
+                        width: 26px;
+                        height: 26px;
+                        background: #fff;
+                        border-radius: 90px;
+                        transition: 0.3s;
+                    &:active:after
+                        width: 20px;*/
+        a button 
+            background-color: rgba(2,2,2,0);
+            border: 2px solid #464646;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 25px;
+            color: #464646;
+            margin-bottom: 1em;
+            &:hover
+                background-color: #464646;
+                color: #fff;
+        .footer a
+            color #525252
 
 
 
